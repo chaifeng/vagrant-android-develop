@@ -10,7 +10,6 @@ To install, download and install [Vagrant](https://www.vagrantup.com/) for your 
 Clone and switch into this repository, run command `vagrant up`. 
 
 ``` console
-$ git clone https://github.com/nerds-odd-e/vagrant-android-develop.git
 $ cd vagrant-android-develop
 $ vagrant up
 ```
@@ -21,7 +20,22 @@ Once everything completes, run command `vagrant ssh` to login.
 $ vagrant ssh
 ```
 
-### How to connect my Android phone?
+If you got any errors, destroy the VM and run again. 
+
+``` console
+$ vagrant destroy
+$ vagrant up
+```
+
+### How to connect a Android Virtual Device?
+
+Run *Genymotion* on your host, and start an Android VM. Then run `adb devices` on your host. Another way, you can find the IP of Android VM at the window title. (In most of cases, the first Android VM's IP address is *192.168.56.101*, and the second one's is *192.168.56.102*, etc.) Assume the IP address is *192.168.56.101*. Run the below command on Vagrant VM:
+
+``` console
+$ adb connect 192.168.56.101
+```
+
+### How to connect a Android phone?
 
 First, use command `VBoxManage list usbhost` to find the *VendorId* of your Android phone.
 
