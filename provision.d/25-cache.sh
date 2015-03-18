@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+echo 'Downloading caches ...'
+
 cd /vagrant/cache
 
 CACHE_SERVER_URL="http://chaifeng.com/vagrant-cache"
@@ -8,7 +10,7 @@ function download_cache() {
     FILE="$1"
 
     if [[ ! -f "$FILE" ]]; then
-        wget -O "$FILE" "${CACHE_SERVER_URL}/$FILE"
+        wget -O "${FILE}" "${CACHE_SERVER_URL}/$FILE"
     fi
 }
 
@@ -40,5 +42,8 @@ download_and_verify jdk-8u25-linux-x64.tar.gz
 download_and_verify latest.tar.gz
 download_and_verify maven-repository-cache.tgz
 
+echo 'Extracting Gradle cache ...'
 tar zxf gradle-cache.tgz
+
+echo 'Extracting Maven cache ...'
 tar zxf maven-repository-cache.tgz
