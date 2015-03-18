@@ -4,7 +4,7 @@ set -e
 echo 'Install Calabash for Android ...'
 su -lc /bin/bash vagrant <<EOF
   set -e
-  if [[ ! -d \$HOME/.rvm ]]; then
+  if [[ ! -f \$HOME/.rvm/scripts/rvm ]]; then
     curl -sSL https://rvm.io/mpapis.asc | gpg --import -
     curl -sSL https://get.rvm.io | bash -s stable
   fi
