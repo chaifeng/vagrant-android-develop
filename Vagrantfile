@@ -49,8 +49,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   {
-    "cache/gradle" => "/home/vagrant/.gradle",
-    "cache/maven" => "/home/vagrant/.m2",
     "src" => "/home/vagrant/src"
   }.map { |local_folder, vagrant_folder|
     config.vm.synced_folder *([local_folder, vagrant_folder] << synced_opts)
