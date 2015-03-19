@@ -10,11 +10,11 @@ cd $CACHE_DIR
 
 CACHE_SERVER_URL="http://chaifeng.com/vagrant-cache"
 function download_cache() {
-    FILE="$1"
+    FILE_CACHE="$1"
 
-    if [[ ! -f "$FILE" ]]; then
-        wget -O "${FILE}" "${CACHE_SERVER_URL}/$FILE"
-        #axel -n 10 -o "${FILE}" "${CACHE_SERVER_URL}/$FILE"
+    if [[ ! -f "$FILE_CACHE" ]]; then
+        wget -O "${FILE_CACHE}" "${CACHE_SERVER_URL}/$FILE_CACHE"
+        #axel -n 10 -o "${FILE_CACHE}" "${CACHE_SERVER_URL}/$FILE_CACHE"
     fi
 }
 
