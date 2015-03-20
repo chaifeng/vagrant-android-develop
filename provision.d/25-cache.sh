@@ -53,22 +53,25 @@ function change_owner_to_vagrant() {
 change_owner_to_vagrant /home/vagrant/.m2
 change_owner_to_vagrant /home/vagrant/.gradle
 
+function extract_cache() {
+    CACHE_ARCHIVE_FILE="$1"
+    CACHE_ROOT="$2"
+    su -lc /bin/bash vagrant <<EOF
+        set -e
+        cd \$HOME
+
+        if [[ ! -f ${CACHE_ROOT}/${CACHE_TIMESTAMP} ]]; then
+            echo 'Extracting ${CACHE_ROOT} ...'
+            tar zxf $CACHE_DIR/${CACHE_ARCHIVE_FILE}
+        fi
+EOF
+}
+
 CACHE_TIMESTAMP=cache-201503192105
 download_and_verify gradle-${CACHE_TIMESTAMP}.tgz
 download_and_verify maven-${CACHE_TIMESTAMP}.tgz
+download_and_verify rvm-${CACHE_TIMESTAMP}.tgz
 
-su -lc /bin/bash vagrant <<EOF
-  set -e
-  cd \$HOME
-
-  if [[ ! -f .gradle/${CACHE_TIMESTAMP} ]]; then
-    echo 'Extracting Gradle cache ...'
-    tar zxf $CACHE_DIR/gradle-${CACHE_TIMESTAMP}.tgz
-  fi
-
-  if [[ ! -f .m2/${CACHE_TIMESTAMP} ]]; then
-    echo 'Extracting Maven cache ...'
-    tar zxf $CACHE_DIR/maven-${CACHE_TIMESTAMP}.tgz
-  fi
-
-EOF
+extract_cache gradle-${CACHE_TIMESTAMP}.tgz .gradle
+extract_cache maven-${CACHE_TIMESTAMP}.tgz  .m2
+extract_cache rvm-${CACHE_TIMESTAMP}.tgz    .rvm
