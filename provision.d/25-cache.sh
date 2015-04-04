@@ -36,8 +36,8 @@ function download_and_verify() {
     verify_cache "$FILE"
 }
 
-download_and_verify android-sdk-packages.tgz
-download_and_verify android-sdk_r23.0.2-linux.tgz
+download_and_verify android-sdk-packages-20150330112629.tgz
+download_and_verify android-sdk_r24.1.2-linux.tgz
 download_and_verify apache-ant-1.9.4-bin.tar.gz
 download_and_verify apache-maven-3.2.3-bin.tar.gz
 download_and_verify gradle-2.2.1-bin.zip
