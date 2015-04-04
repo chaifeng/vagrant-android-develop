@@ -7,17 +7,17 @@ A Vagrant VM for Android development environment
 
 To install, download and install [Vagrant](https://www.vagrantup.com/) for your platform, then download and install [VirtualBox](https://www.virtualbox.org/).
 
-Clone and switch into this repository, run command `vagrant up`. 
+Clone and switch into this repository, update submodules
 
 ``` console
 $ cd vagrant-android-develop
-$ vagrant up
+$ git submodule update --init --recursive
 ```
 
-Once everything completes, run command `vagrant ssh` to login.
+Run command `vagrant up` to start the VM
 
 ``` console
-$ vagrant ssh
+$ vagrant up
 ```
 
 If you got any errors, destroy the VM and run again. 
@@ -25,6 +25,12 @@ If you got any errors, destroy the VM and run again.
 ``` console
 $ vagrant destroy
 $ vagrant up
+```
+
+Once everything completes, run the below command to build the WordPress for Android project
+
+``` console
+$ vagrant ssh -c 'cd src/WordPress-Android; gradle assembleVanilla'
 ```
 
 ### How to connect a Android Virtual Device?
@@ -69,13 +75,20 @@ $ ANDROID_VENDOR_ID=0x04e8 vagrant reload
  * Gradle 2.2.1
  * Maven 3.2.3
  * Ant 1.9.4
+ * Apache httpd
+ * PHP
+ * MySQL
+ * Ruby
+ * RVM
+ * Cucumber
+ * Calabash
+ * WordPress
+ * WordPress Client for Android
  * Android SDK with packages:
    - tools
    - platform-tools
-   - build-tools-21.1.1
-   - android-21
-   - build-tools-19.1.0
-   - android-19
+   - build-tools
+   - android
    - extra-android-m2repository
    - extra-android-support
    - extra-google-m2repository
