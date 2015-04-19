@@ -8,7 +8,7 @@ ANDROID_SDK_FILENAME=android-sdk_r24.1.2-linux.tgz
 ANDROID_HOME=/opt/android-sdk-linux
 ANDROID_SDK_URL=http://dl.google.com/android/$ANDROID_SDK_FILENAME
 ANDROID_SDK_LOCAL_CACHE=/vagrant/cache/$ANDROID_SDK_FILENAME
-ANDROID_SDK_PACKAGES_LOCAL_CACHE=/vagrant/cache/android-sdk-packages-20150330112629.tgz
+ANDROID_SDK_PACKAGES_LOCAL_CACHE=/vagrant/cache/android-sdk-packages-20150419082513.tgz
 ANDROID_PROFILE_FILENAME=/etc/profile.d/android.sh
 
 [[ "i686" == $(uname -i) ]] || apt-get install -y libc6-i386 lib32stdc++6 lib32gcc1 lib32ncurses5 lib32z1

@@ -13,8 +13,8 @@ function download_cache() {
     FILE_CACHE="$1"
 
     if [[ ! -f "$FILE_CACHE" ]]; then
-        wget -O "${FILE_CACHE}" "${CACHE_SERVER_URL}/$FILE_CACHE"
-        #axel -n 10 -o "${FILE_CACHE}" "${CACHE_SERVER_URL}/$FILE_CACHE"
+        wget -O "${FILE_CACHE}" "${CACHE_SERVER_URL}/$FILE_CACHE" || true
+        #axel -n 10 -o "${FILE_CACHE}" "${CACHE_SERVER_URL}/$FILE_CACHE" || true
     fi
 }
 
@@ -33,10 +33,10 @@ function download_and_verify() {
     [[ -f "$FILE" ]] && verify_cache "$FILE" && return 0
     rm -f "$FILE"
     download_cache "$FILE"
-    verify_cache "$FILE"
+    [[ -f "$FILE" ]] && verify_cache "$FILE"
 }
 
-download_and_verify android-sdk-packages-20150330112629.tgz
+download_and_verify android-sdk-packages-20150419082513.tgz
 download_and_verify android-sdk_r24.1.2-linux.tgz
 download_and_verify apache-ant-1.9.4-bin.tar.gz
 download_and_verify apache-maven-3.2.3-bin.tar.gz
