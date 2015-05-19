@@ -3,9 +3,17 @@ vagrant-android-develop
 
 A Vagrant VM for Android development environment
 
-## Manual
+## Requement
 
 To install, download and install [Vagrant](https://www.vagrantup.com/) for your platform, then download and install [VirtualBox](https://www.virtualbox.org/).
+
+## Quick start
+
+``` console
+curl -L https://bit.ly/vadqs | bash
+```
+
+## Manual
 
 Clone and switch into this repository, update submodules
 
