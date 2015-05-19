@@ -73,6 +73,7 @@ WP_CLI_OPTS='--allow-root --path=$WORDPRESS_HOME'
 && exit 0
 
 echo "
+set -e
 $WP_CLI_CMD \$WP_CLI_OPTS option update siteurl '\$WORDPRESS_URL'
 $WP_CLI_CMD \$WP_CLI_OPTS option update home    '\$WORDPRESS_URL'
 " | su -lc /bin/bash $WORDPRESS_USER
@@ -107,5 +108,18 @@ echo "Update WordPress ..."
 $WP_CLI_CMD core update-db
 $WP_CLI_CMD plugin update --all
 $WP_CLI_CMD theme  update --all
+
+$WP_CLI_CMD option update siteurl '\$WORDPRESS_URL'
+$WP_CLI_CMD option update home    '\$WORDPRESS_URL'
+$WP_CLI_CMD option update default_comment_status closed
+$WP_CLI_CMD option update default_ping_status closed
+$WP_CLI_CMD option update default_pingback_flag ''
+$WP_CLI_CMD option update comment_moderation    ''
+$WP_CLI_CMD option update comment_whitelist     ''
+$WP_CLI_CMD option update comments_notify   ''
+$WP_CLI_CMD option update moderation_notify ''
+$WP_CLI_CMD option update show_avatars      ''
+$WP_CLI_CMD post update 1 4 6 8 10 --comment_status=closed
+$WP_CLI_CMD post update 1 4 6 8 10 --ping_status=closed
 
 EOF
