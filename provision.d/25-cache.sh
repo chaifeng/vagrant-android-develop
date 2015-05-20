@@ -42,7 +42,8 @@ download_and_verify apache-ant-1.9.4-bin.tar.gz
 download_and_verify apache-maven-3.2.3-bin.tar.gz
 download_and_verify gradle-2.2.1-bin.zip
 download_and_verify jdk-8u25-linux-x64.tar.gz
-download_and_verify latest.tar.gz
+download_and_verify en_US-4.2.2.tar.gz
+download_and_verify wordpress-importer-0.6.1.zip
 
 function change_owner_to_vagrant() {
     if [[ -e $1 ]] && [[ 'vagrant' != "$(stat --format=%U $1)" ]]; then
