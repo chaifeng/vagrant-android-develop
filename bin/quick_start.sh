@@ -40,6 +40,10 @@ else
 fi
 git submodule update --init --recursive || true
 
-( vagrant status | grep '^default' | grep -F running && vagrant reload --provision ) || vagrant up --provision
+if ( vagrant status | grep '^default' | grep -F running ); then
+    vagrant reload --provision
+else
+    vagrant up --provision
+fi
 
 vagrant ssh -c "test -f /.vagrant-shell-provision.DONE"
