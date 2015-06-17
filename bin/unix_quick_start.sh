@@ -6,7 +6,7 @@ if [[ "$(id -u)" == "0" ]]; then
     exit 1
 fi
 
-[[ "Darwin" == "$(uname -o)" ]] && if ! brew config; then
+[[ "Darwin" == "$(uname)" ]] && if ! brew config; then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
