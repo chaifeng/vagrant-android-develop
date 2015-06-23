@@ -17,5 +17,5 @@ su -lc /bin/bash vagrant <<EOF
   gem sources -a https://ruby.taobao.org/
   gem sources --list
   gem install calabash-android --version 0.5.5
-  gem install cucumbe capybara capybara-mechanize rspec
+  gem install cucumber capybara capybara-mechanize rspec
 EOF
