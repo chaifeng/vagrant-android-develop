@@ -40,7 +40,7 @@ else
 fi
 git submodule update --init --recursive || true
 
-if ( vagrant status | grep '^default' | grep -F running ); then
+if ( vagrant status | grep '^default' | grep -E '(aborted|running)' ); then
     vagrant reload --provision
 else
     vagrant up --provision
