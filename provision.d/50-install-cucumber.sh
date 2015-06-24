@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+RUBY_VERSION=2.2.1
+
 echo 'Install Calabash for Android ...'
 su -lc /bin/bash vagrant <<EOF
   set -e
@@ -11,11 +13,13 @@ su -lc /bin/bash vagrant <<EOF
   source \$HOME/.rvm/scripts/rvm
   rvm requirements
   grep '.rvm/scripts/rvm' \$HOME/.bashrc || echo '[[ -s "\$HOME/.rvm/scripts/rvm" ]] && source "\$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*' >> \$HOME/.bashrc
-  rvm list | fgrep ruby || LC_ALL=C DEBIAN_FRONTEND=noninteractive rvm --quiet-curl install ruby
-  rvm use ruby@Calabash-Android --create --default
+  rvm list | fgrep ruby-${RUBY_VERSION} || LC_ALL=C DEBIAN_FRONTEND=noninteractive rvm --quiet-curl install ${RUBY_VERSION}
+  rvm use ${RUBY_VERSION}@default --create --default
   gem sources --remove https://rubygems.org/
   gem sources -a https://ruby.taobao.org/
-  gem sources --list
-  gem install calabash-android --version 0.5.5
-  gem install cucumber capybara capybara-mechanize rspec
+  gem install bundle
+
+  cd \$HOME/src
+  rvm rvmrc warning ignore \$HOME/src/Gemfile
+  bundle install
 EOF

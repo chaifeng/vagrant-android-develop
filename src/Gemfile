@@ -1,0 +1,9 @@
+source 'https://ruby.taobao.org'
+
+ruby '2.2.1'
+
+gem 'calabash-android', '0.5.5'
+gem 'cucumber'
+gem 'capybara'
+gem 'capybara-mechanize'
+gem 'rspec'
